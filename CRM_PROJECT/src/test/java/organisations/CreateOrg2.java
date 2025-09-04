@@ -17,6 +17,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import generic_utility.WebdriverUtility;
+
 public class CreateOrg2 
 {
 
@@ -99,7 +101,11 @@ public class CreateOrg2
 		
 		phoneField.sendKeys(String.valueOf(phoneNumber));
 		
+		WebdriverUtility WUtil = new WebdriverUtility(driver);
+		
 		WebElement IndustryDD = driver.findElement(By.name("industry"));
+		
+		WUtil.GetOptions(IndustryDD);
 		
 		Select selIndustry = new Select(IndustryDD);
 		
