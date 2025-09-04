@@ -3,6 +3,7 @@ package organisations;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.poi.ss.usermodel.Sheet;
@@ -105,46 +106,50 @@ public class CreateOrg2
 		
 		WebElement IndustryDD = driver.findElement(By.name("industry"));
 		
-		WUtil.GetOptions(IndustryDD);
-		
-		Select selIndustry = new Select(IndustryDD);
-		
-		selIndustry.selectByValue(sh.getRow(1).getCell(4).getStringCellValue());
-		
-		WebElement Employees = driver.findElement(By.id("employees"));
-		
-		short EmployeeNo = (short)sh.getRow(1).getCell(3).getNumericCellValue();
-		
-		Employees.sendKeys(""+EmployeeNo);
-		
-		wb.close();
-		
-		Thread.sleep(2000);
-		
-		driver.findElement(By.xpath("//input[@title='Save [Alt+S]'][1]")).click();
-		
-		Thread.sleep(2000);
-		
-		String outputOrg = driver.findElement(By.id("dtlview_Organization Name")).getText();
-		
-		if(outputOrg.equals(inputOrg))
-		{
-			System.out.println("Organisation created successfully");
-		}
-		else
-		{
-			System.out.println("organisation not created successfully");
+		List<WebElement> opts = WUtil.GetOptions(IndustryDD);
+		for (WebElement i : opts) {
+			System.out.println(i.getText());
 		}
 		
-		WebElement profile = driver.findElement(By.cssSelector("img[src='themes/softed/images/user.PNG']"));
 		
-		Actions act = new Actions(driver);
-		
-		act.moveToElement(profile).build().perform();
-		
-		driver.findElement(By.linkText("Sign Out")).click();
-	
-		driver.close();
+//		Select selIndustry = new Select(IndustryDD);
+//		
+//		selIndustry.selectByValue(sh.getRow(1).getCell(4).getStringCellValue());
+//		
+//		WebElement Employees = driver.findElement(By.id("employees"));
+//		
+//		short EmployeeNo = (short)sh.getRow(1).getCell(3).getNumericCellValue();
+//		
+//		Employees.sendKeys(""+EmployeeNo);
+//		
+//		wb.close();
+//		
+//		Thread.sleep(2000);
+//		
+//		driver.findElement(By.xpath("//input[@title='Save [Alt+S]'][1]")).click();
+//		
+//		Thread.sleep(2000);
+//		
+//		String outputOrg = driver.findElement(By.id("dtlview_Organization Name")).getText();
+//		
+//		if(outputOrg.equals(inputOrg))
+//		{
+//			System.out.println("Organisation created successfully");
+//		}
+//		else
+//		{
+//			System.out.println("organisation not created successfully");
+//		}
+//		
+//		WebElement profile = driver.findElement(By.cssSelector("img[src='themes/softed/images/user.PNG']"));
+//		
+//		Actions act = new Actions(driver);
+//		
+//		act.moveToElement(profile).build().perform();
+//		
+//		driver.findElement(By.linkText("Sign Out")).click();
+//	
+//		driver.close();
 
 	}
 

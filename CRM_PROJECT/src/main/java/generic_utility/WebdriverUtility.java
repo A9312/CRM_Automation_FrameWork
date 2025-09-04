@@ -116,14 +116,11 @@ public class WebdriverUtility {
 		sel.selectByVisibleText(text);
 	}
 	
-	public void GetOptions(WebElement element)
+	public List<WebElement> GetOptions(WebElement element)
 	{
 		Select sel=new Select(element);
 		List<WebElement>  options=sel.getOptions();
-		for(WebElement option:options)
-		{
-			System.out.println(option.getText());
-		}
+		return options;
 	}
 	
 	

@@ -15,7 +15,7 @@ public class GetDataFromExcelFile
 
 	public static void main(String[] args) throws EncryptedDocumentException, IOException 
 	{
-		FileInputStream fis = new FileInputStream("E:\\java_workspace\\CRM_PROJECT\\src\\test\\resources\\Vtiger_Data.xlsx");
+		FileInputStream fis = new FileInputStream("C:\\Users\\Hp\\git\\SeleniumProject\\CRM_PROJECT\\src\\test\\resources\\Test_Script_Data.xlsx");
 		
 		Workbook wb = WorkbookFactory.create(fis);
 		
