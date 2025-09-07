@@ -90,7 +90,7 @@ public class CreateOrg2
 		
 //		String inputOrg = "qsp"+(int)(Math.random()*9999);
 		
-		String inputOrg = sh.getRow(1).getCell(0).getStringCellValue();
+		String inputOrg = sh.getRow(1).getCell(0).getStringCellValue()+(int)(Math.random()*9999);
 		
 		WebElement orgField = driver.findElement(By.name("accountname"));
 		
@@ -112,44 +112,46 @@ public class CreateOrg2
 		}
 		
 		
-//		Select selIndustry = new Select(IndustryDD);
-//		
-//		selIndustry.selectByValue(sh.getRow(1).getCell(4).getStringCellValue());
-//		
-//		WebElement Employees = driver.findElement(By.id("employees"));
-//		
-//		short EmployeeNo = (short)sh.getRow(1).getCell(3).getNumericCellValue();
-//		
-//		Employees.sendKeys(""+EmployeeNo);
-//		
-//		wb.close();
-//		
-//		Thread.sleep(2000);
-//		
-//		driver.findElement(By.xpath("//input[@title='Save [Alt+S]'][1]")).click();
-//		
-//		Thread.sleep(2000);
-//		
-//		String outputOrg = driver.findElement(By.id("dtlview_Organization Name")).getText();
-//		
-//		if(outputOrg.equals(inputOrg))
-//		{
-//			System.out.println("Organisation created successfully");
-//		}
-//		else
-//		{
-//			System.out.println("organisation not created successfully");
-//		}
-//		
-//		WebElement profile = driver.findElement(By.cssSelector("img[src='themes/softed/images/user.PNG']"));
-//		
+		Select selIndustry = new Select(IndustryDD);
+		
+		selIndustry.selectByValue(sh.getRow(1).getCell(4).getStringCellValue());
+		
+		WebElement Employees = driver.findElement(By.id("employees"));
+		
+		short EmployeeNo = (short)sh.getRow(1).getCell(3).getNumericCellValue();
+		
+		Employees.sendKeys(""+EmployeeNo);
+		
+		wb.close();
+		
+		Thread.sleep(2000);
+		
+		driver.findElement(By.xpath("//input[@title='Save [Alt+S]'][1]")).click();
+		
+		Thread.sleep(2000);
+		
+		String outputOrg = driver.findElement(By.id("dtlview_Organization Name")).getText();
+		
+		if(outputOrg.equals(inputOrg))
+		{
+			System.out.println("Organisation created successfully");
+		}
+		else
+		{
+			System.out.println("organisation not created successfully");
+		}
+		
+		WebElement profile = driver.findElement(By.cssSelector("img[src='themes/softed/images/user.PNG']"));
+		
 //		Actions act = new Actions(driver);
 //		
 //		act.moveToElement(profile).build().perform();
-//		
-//		driver.findElement(By.linkText("Sign Out")).click();
-//	
-//		driver.close();
+		
+		WUtil.Hover(profile);
+		
+		driver.findElement(By.linkText("Sign Out")).click();
+	
+		driver.close();
 
 	}
 
