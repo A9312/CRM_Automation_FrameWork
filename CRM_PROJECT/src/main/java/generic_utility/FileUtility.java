@@ -32,12 +32,12 @@ public class FileUtility
 		
 		Sheet sh = wb.getSheet(SheetName);
 		
-		String inputOrg = sh.getRow(RowNum).getCell(CellNum).getStringCellValue()+(int)(Math.random()*9999);
+		String input1 = sh.getRow(RowNum).getCell(CellNum).getStringCellValue();
 		
-		return inputOrg;
+		return input1;
 	}
 	
-	public long getNumericDataFromExcelFile(String SheetName, int RowNum, int CellNum) throws EncryptedDocumentException, IOException
+	public String getNumericDataFromExcelFile(String SheetName, int RowNum, int CellNum) throws EncryptedDocumentException, IOException
 	{
 		FileInputStream fis2 = new FileInputStream("E:\\java_workspace\\CRM_PROJECT\\src\\test\\resources\\Test_Script_Data.xlsx");
 		
@@ -45,9 +45,9 @@ public class FileUtility
 		
 		Sheet sh = wb.getSheet(SheetName);
 		
-		long phoneNumber = (long) sh.getRow(RowNum).getCell(CellNum).getNumericCellValue();
+		String input2 = String.valueOf((long) sh.getRow(1).getCell(2).getNumericCellValue());
 		
-		return phoneNumber;
+		return input2;
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -59,7 +59,6 @@ public class FileUtility
 		System.out.println(fUtil.getStringDataFromExcelFile("Organisation", 1, 0));
 		
 		System.out.println(fUtil.getNumericDataFromExcelFile("Organisation", 1, 2));
-		
 		
 		
 	}
