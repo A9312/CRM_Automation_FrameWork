@@ -1,38 +1,24 @@
 package organisations;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.time.Duration;
-import java.util.List;
-import java.util.Properties;
 
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
+import org.apache.poi.EncryptedDocumentException;
+import org.testng.annotations.Test;
 
-import generic_utility.FileUtility;
+import base_utility.BaseClass1;
 import generic_utility.FileUtility_1;
 import generic_utility.WebdriverUtility;
 import object_repository.CreateOrgPage;
-import object_repository.SignOutPage;
 import object_repository.VerifyOrgPage;
-import object_repository.Vtiger_LoginPage;
 
-public class CreateOrg2 
+public class CreateOrg2 extends BaseClass1
 {
 
-	public static void main(String[] args) throws InterruptedException, IOException 
-	{
-		FileUtility_1 FUtil = new FileUtility_1();
+//	public static void main(String[] args) throws InterruptedException, IOException 
+//	{
 		
+	@Test
+	public void createorg() throws EncryptedDocumentException, IOException, InterruptedException {
 //		FileInputStream fis1 = new FileInputStream("E:\\java_workspace\\CRM_PROJECT\\src\\test\\resources\\commonData.properties");
 		
 //		FileInputStream fis2 = new FileInputStream("E:\\java_workspace\\CRM_PROJECT\\src\\test\\resources\\Test_Script_Data.xlsx");
@@ -53,51 +39,28 @@ public class CreateOrg2
 //		
 //		String PASSWORD = pObj.getProperty("pwd");
 		
-		String BROWSER = FUtil.getDataFromPropertiesFile("bro");
+
 		
-		WebDriver driver = null;
-		
-		if(BROWSER.equals("chrome"))
-		{
-			driver = new ChromeDriver();
-		}
-		else if(BROWSER.equals("edge"))
-		{
-			driver = new EdgeDriver();
-		}
-		else if(BROWSER.equals("firefox"))
-		{
-			driver = new FirefoxDriver();
-		}
-		else
-		{
-			driver = new ChromeDriver();
-		}
-		
-		driver.manage().window().maximize();
-		
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-		
-		driver.get(FUtil.getDataFromPropertiesFile("url"));
+//		driver.get(FUtil.getDataFromPropertiesFile("url"));
 		
 //		WebElement username = driver.findElement(By.name("user_name"));
 //		
 //		WebElement password = driver.findElement(By.name("user_password"));
 		
-		Vtiger_LoginPage vp = new Vtiger_LoginPage(driver);
+//		Vtiger_LoginPage vp = new Vtiger_LoginPage(driver);
 		
 //		username.sendKeys(USERNAME);
 //		
 //		password.sendKeys(PASSWORD);
 		
-		vp.getUsername().sendKeys(FUtil.getDataFromPropertiesFile("un"));
-		vp.getPassword().sendKeys(FUtil.getDataFromPropertiesFile("pwd"));
+//		vp.getUsername().sendKeys(FUtil.getDataFromPropertiesFile("un"));
+//		vp.getPassword().sendKeys(FUtil.getDataFromPropertiesFile("pwd"));
 		
 //		
 //		WebElement loginbtn = driver.findElement(By.id("submitButton"));
 		
 //		loginbtn.click();
-		vp.getLoginbtn().click();
+//		vp.getLoginbtn().click();
 		
 //		WebElement Organisations= driver.findElement(By.linkText("Organizations"));
 		
@@ -114,6 +77,8 @@ public class CreateOrg2
 //		String inputOrg = "qsp"+(int)(Math.random()*9999);
 		
 //		String inputOrg = sh.getRow(1).getCell(0).getStringCellValue()+(int)(Math.random()*9999);
+		
+		FileUtility_1 FUtil = new FileUtility_1();
 		
 		String inputOrg= FUtil.getOrgNameDataFromExcelFile("Organisation", 1, 0);
 		
@@ -202,7 +167,7 @@ public class CreateOrg2
 		
 //		WebElement profile = driver.findElement(By.cssSelector("img[src='themes/softed/images/user.PNG']"));
 		
-		SignOutPage sop = new SignOutPage(driver);
+//		SignOutPage sop = new SignOutPage(driver);
 	
 //		Actions act = new Actions(driver);
 //		
@@ -210,13 +175,13 @@ public class CreateOrg2
 		
 //		WUtil.Hover(profile);
 		
-		WUtil.Hover(sop.getProfile());
+//		WUtil.Hover(sop.getProfile());
 		
 //		driver.findElement(By.linkText("Sign Out")).click();
 		
-		sop.getSignOut().click();
-	
-		driver.close();
+//		sop.getSignOut().click();
+//	
+//		driver.close();
 
 	}
 

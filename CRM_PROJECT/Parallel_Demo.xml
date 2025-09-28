@@ -4,6 +4,7 @@
 
 <suite parallel="tests" name="Suite">
 	<test thread-count="5" parallel="tests" name="TestRunner1">
+	<parameter name="bro" value="firefox"></parameter>
 		<classes>
 			<class name="typesofexecution.Demo1test" />
 		</classes>
@@ -11,6 +12,7 @@
 
 
 	<test thread-count="5" parallel="tests" name="TestRunner2">
+	<parameter name="bro" value="chrome"></parameter>
 		<classes>
 			<class name="typesofexecution.Demo2test" />
 		</classes>
@@ -18,6 +20,7 @@
 
 
 	<test thread-count="5" parallel="tests" name="TestRunner3">
+	<parameter name="bro" value="edge"></parameter>
 		<classes>
 			<class name="typesofexecution.Demo3test" />
 		</classes>

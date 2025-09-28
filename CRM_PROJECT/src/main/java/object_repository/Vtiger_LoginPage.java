@@ -33,4 +33,11 @@ public class Vtiger_LoginPage {
 		return loginbtn;
 	}
 	
+	public void logintocrm(String username, String password)
+	{
+		getUsername().sendKeys(username);
+		getPassword().sendKeys(password);
+		getLoginbtn().click();
+	}
+	
 }

@@ -77,5 +77,55 @@ public class FileUtility_1 {
 		return EmployeeNo;
 	}
 	
-
+	public String getDocumentTitleDataFromExcelFile(String SheetName, int RowNum, int CellNum) throws EncryptedDocumentException, IOException
+	{
+		FileInputStream fis2 = new FileInputStream("E:\\java_workspace\\CRM_PROJECT\\src\\test\\resources\\Test_Script_Data.xlsx");
+		
+		Workbook wb = WorkbookFactory.create(fis2);
+		
+		Sheet sh = wb.getSheet(SheetName);
+		
+		String inputDocTitle = sh.getRow(RowNum).getCell(CellNum).getStringCellValue();
+		
+		return inputDocTitle;
+	}
+	
+	public String getGroupNameFromExcelFile(String SheetName, int RowNum, int CellNum) throws EncryptedDocumentException, IOException
+	{
+		FileInputStream fis2 = new FileInputStream("E:\\java_workspace\\CRM_PROJECT\\src\\test\\resources\\Test_Script_Data.xlsx");
+		
+		Workbook wb = WorkbookFactory.create(fis2);
+		
+		Sheet sh = wb.getSheet(SheetName);
+		
+		String inputGroup = sh.getRow(RowNum).getCell(CellNum).getStringCellValue();
+		
+		return inputGroup;
+	}
+	
+	public String getNotesFromExcelFile(String SheetName, int RowNum, int CellNum) throws EncryptedDocumentException, IOException
+	{
+		FileInputStream fis2 = new FileInputStream("E:\\java_workspace\\CRM_PROJECT\\src\\test\\resources\\Test_Script_Data.xlsx");
+		
+		Workbook wb = WorkbookFactory.create(fis2);
+		
+		Sheet sh = wb.getSheet(SheetName);
+		
+		String inputnotes = sh.getRow(RowNum).getCell(CellNum).getStringCellValue();
+		
+		return inputnotes;
+	}
+	
+	public String getVersionFromExcelFile(String SheetName, int RowNum, int CellNum) throws EncryptedDocumentException, IOException
+	{
+		FileInputStream fis2 = new FileInputStream("E:\\java_workspace\\CRM_PROJECT\\src\\test\\resources\\Test_Script_Data.xlsx");
+		
+		Workbook wb = WorkbookFactory.create(fis2);
+		
+		Sheet sh = wb.getSheet(SheetName);
+		
+		String inputversion = sh.getRow(RowNum).getCell(CellNum).getStringCellValue();
+		
+		return inputversion;
+	}
 }
