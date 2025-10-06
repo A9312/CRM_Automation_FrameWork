@@ -23,112 +23,84 @@ import object_repository.SignOutPage;
 import object_repository.Vtiger_LoginPage;
 
 public class BaseClass1 {
-	
+
 	public static WebDriver driver = null;
-	
+
 	@BeforeSuite
-	public void dbconn()
-	{
+	public void dbconn() {
 		System.out.println("database connectivity + report configuration");
 	}
-	
+
 	@BeforeTest
-	public void precon()
-	{
+	public void precon() {
 		System.out.println("pre conditions");
 	}
 
 	@BeforeClass
-	public void openbro() throws IOException
-	{
+	public void openbro() throws IOException {
 		FileUtility_1 FUtil = new FileUtility_1();
-		
+
 		String BROWSER = FUtil.getDataFromPropertiesFile("bro");
-		
-		if(BROWSER.equals("chrome"))
-		{
+
+		if (BROWSER.equals("chrome")) {
 			driver = new ChromeDriver();
-		}
-		else if(BROWSER.equals("edge"))
-		{
+		} else if (BROWSER.equals("edge")) {
 			driver = new EdgeDriver();
-		}
-		else if(BROWSER.equals("firefox"))
-		{
+		} else if (BROWSER.equals("firefox")) {
 			driver = new FirefoxDriver();
-		}
-		else
-		{
+		} else {
 			driver = new ChromeDriver();
 		}
-		
+
 		driver.manage().window().maximize();
-		
+
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 	}
-	
-	
+
 	@BeforeMethod
-	public void login() throws IOException
-	{
+	public void login() throws IOException {
 		FileUtility_1 FUtil = new FileUtility_1();
-		
+
 		String URL = FUtil.getDataFromPropertiesFile("url");
 		String USERNAME = FUtil.getDataFromPropertiesFile("un");
 		String PASSWORD = FUtil.getDataFromPropertiesFile("pwd");
-		
+
 		driver.get(URL);
-		
+
 		Vtiger_LoginPage vop = new Vtiger_LoginPage(driver);
-		
+
 		vop.logintocrm(USERNAME, PASSWORD);
-		
+
 	}
-	
-	
+
 	@AfterMethod
-	public void logout()
-	{
+	public void logout() {
 		SignOutPage sop = new SignOutPage(driver);
-		
+
 		WebElement profile = sop.getProfile();
-		
+
 		WebdriverUtility WUtil = new WebdriverUtility(driver);
-		
+
 		WUtil.Hover(profile);
-		
+
 		sop.getSignOut().click();
 	}
-	
+
 	@AfterClass
-	public void closebro() throws InterruptedException
-	{
+	public void closebro() throws InterruptedException {
 		Thread.sleep(3000);
-		
+
 		driver.quit();
 	}
-	
+
 	@AfterTest
-	public void postcon()
-	{
+	public void postcon() {
 		System.out.println("Post Conditions");
 	}
-	
+
 	@AfterSuite
-	public void dbclose()
-	{
+	public void dbclose() {
 		System.out.println("database connectivity close + report backup");
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
